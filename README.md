@@ -81,9 +81,10 @@ Two variants are evaluated:
 This allows us to measure how **effort scales with identity strength**.
 
 ---
-• Boundary-aligned manipulation induces near-total identity reorientation
 
-We introduce a second adversarial strategy, **Boundary Artist Injection**, which targets artists that are:
+#### Attack Strategy: Boundary Artist Injection
+
+We targets artists that are:
 - frequently listened to by users *similar* to the victim
 - completely absent from the victim’s listening history
 
