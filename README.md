@@ -81,6 +81,25 @@ Two variants are evaluated:
 This allows us to measure how **effort scales with identity strength**.
 
 ---
+• Boundary-aligned manipulation induces near-total identity reorientation
+
+We introduce a second adversarial strategy, **Boundary Artist Injection**, which targets artists that are:
+- frequently listened to by users *similar* to the victim
+- completely absent from the victim’s listening history
+
+Rather than amplifying a single axis of preference, this attack injects a small number of listens across multiple **semantically adjacent but previously unobserved dimensions**.
+
+Despite injecting only **250 total listens** into a user with an extremely large listening history, we observe:
+
+- **Near-maximal identity drift (≈ 1.0)**
+- **Severe recommendation turnover (overlap = 2 / 10)**
+
+Notably, the injected listening volume is **negligible relative to the user’s total playcount**, yet it causes a near-complete reorientation of the inferred identity.
+
+This indicates that collaborative recommender systems are **far more sensitive to directional changes in preference space than to absolute listening volume**. Introducing new, semantically aligned dimensions can rotate a user’s identity vector enough to alter similarity relationships and downstream recommendations.
+
+In effect, this attack demonstrates that **identity can be redefined not by how much a user listens, but by *where* they listen within the preference space**.
+
 
 ### 4. Evaluation Metrics
 
