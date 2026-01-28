@@ -142,7 +142,7 @@ This behavior mirrors real-world recommender systems.
 
 ## Limitations
 
-The recommender is a surrogate model, not a production system. My idea is to expand this to the real recommender system that music streaming uses (unfortunately, Spotify has paused integrations, so my original idea was scrapped for now). Listening counts approximate real-time behavior, and social and contextual signals are not modeled  
+The recommender is a surrogate model, not a production system. My idea is to expand this to the real recommender system that music streaming uses (unfortunately, Spotify has paused integrations, so my original idea was scrapped for now). Listening counts approximate real-time behavior, and social and contextual signals are not modeled.
 
 
 ---
