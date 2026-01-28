@@ -126,8 +126,6 @@ Lower overlap indicates a stronger behavioral impact on recommendations.
 ### • Small absolute manipulations are ineffective
 Injecting a small number of listens into users with strong identities produces **negligible identity drift** and **no recommendation changes**.
 
----
-
 ### • Relative manipulation causes significant identity shift
 When injection is scaled relative to a user’s historical listening volume, we observe:
 
@@ -136,7 +134,6 @@ When injection is scaled relative to a user’s historical listening volume, we 
 
 This demonstrates that **inferred identity is manipulable when adversarial effort is proportional to existing signal strength**.
 
----
 
 ### • Identity changes faster than recommendations
 In multiple experiments, identity vectors shifted significantly while recommendations remained largely stable.
@@ -150,8 +147,6 @@ This behavior mirrors real-world recommender systems.
 ---
 
 ## Main Insight
-
-> **Recommender vulnerability is inversely related to identity strength.**
 
 - Weak or sparse user histories are highly vulnerable
 - Strong identities require more effort but remain manipulable
