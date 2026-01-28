@@ -1,4 +1,4 @@
-# 🎧 Syntheposer
+#  Syntheposer
 
 **Synthetic identity attacks on music recommender systems**
 
