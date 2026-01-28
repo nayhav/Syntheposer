@@ -11,6 +11,7 @@ Music recommender systems infer a user’s musical *identity* from historical li
 > **Can a legitimate user, using only valid listening behavior, deliberately manipulate how a recommender system perceives their taste?**
 
 Rather than attacking system infrastructure, this project targets the **preference inference mechanism itself**, treating the user as a potential adversary.
+My recommender is much simpler than Spotify’s, by design. I wanted to isolate the core mechanism of identity inference and understand its behavior without confounding factors. The goal wasn’t realism, it was interpretability.
 
 ---
 
