@@ -1,21 +1,13 @@
 #  Identikit
 
-**Synthetic identity attacks on music recommender systems**
-
----
-
-## Overview
-
-Music recommender systems infer a user’s musical *identity* from historical listening behavior and use this inferred identity to personalize recommendations. **Identikit** is a (for now, casual) attempt how robust that inferred identity really is.
+*Synthetic identity attacks on music recommender systems.* Music recommender systems infer a user’s musical *identity* from historical listening behavior and use this inferred identity to personalize recommendations. **Identikit** is a (for now, casual) attempt how robust that inferred identity really is.
 
 > **Can a legitimate user, using only valid listening behavior, deliberately manipulate how a recommender system perceives their taste?**
 
 Rather than attacking system infrastructure, this project targets the **preference inference mechanism itself**, treating the user as a potential adversary.
 My recommender is much simpler than Spotify’s, by design. I wanted to isolate the core mechanism of identity inference and understand its behavior without confounding factors. The goal wasn’t realism, it was interpretability.
 
-This ongoing project is still in the extremely newborn stage. Two simple attacks on a simple recommender are implemented. 
-
----
+Two simple attacks on a basic recommender are implemented so far. I am planning to expand this project in the future.
 
 ## Core Idea
 
@@ -24,8 +16,6 @@ Recommender systems implicitly assume:
 > *Observed behavior ≈ genuine preference*
 
 Identikit challenges this assumption by demonstrating that **algorithmic identity can be constructed, shifted, and manipulated** through carefully chosen listening patterns, without violating any rules. The result is a phenomenon we refer to as **synthetic taste**: an identity that looks authentic to the system, regardless of genuine preference.
-
----
 
 ## Dataset
 
@@ -36,11 +26,9 @@ This project uses the **HetRec 2011 Last.fm dataset**, which contains:
 - User–artist listening counts (implicit feedback)  
 - Artist metadata and tags  
 
-Each user’s listening history is treated as **implicit preference data**, closely mirroring real-world music streaming platforms.
+Each user’s listening history is treated as *implicit preference data*, closely mirroring real-world music streaming platforms.
 
 I used this particular dataset because it summarizes real users with repeated behavior, both strong and weak identity profiles. It is reproducible and ToS-safe and widely used in recommender systems research. (Also lfm-1b is not available to download right now due to licensing so this is some good old cope)
-
----
 
 ## Methodology
 
@@ -50,19 +38,16 @@ A user’s musical identity is modeled as a **normalized artist preference vecto
 
 This vector represents the system’s belief about the user’s taste.
 
----
 
 ### 2. Baseline Recommender
 
-We implement a **user–user collaborative filtering recommender**:
+We implement a *user–user collaborative filtering recommender*:
 
 - Users are represented by identity vectors  
 - Cosine similarity is used to find similar users  
 - Recommendations are aggregated from similar users’ preferences  
 
 The recommender is intentionally simple and fixed to focus on **robustness**, not recommendation quality.
-
----
 
 ### 3. Adversarial User Behavior
 
@@ -83,17 +68,13 @@ Two variants are evaluated:
 
 This allows us to measure how **effort scales with identity strength**.
 
----
-
 #### Attack Strategy: Boundary Artist Injection
 
 We targets artists that are:
 - frequently listened to by users *similar* to the victim
 - completely absent from the victim’s listening history
 
-Rather than amplifying a single axis of preference, this attack injects a small number of listens across multiple **semantically adjacent but previously unobserved dimensions**.
-
-Despite injecting only **250 total listens** into a user with an extremely large listening history, we observe:
+Rather than amplifying a single axis of preference, this attack injects a small number of listens across multiple *semantically adjacent but previously unobserved dimensions*. Despite injecting only *250 total listens**into a user with an extremely large listening history, we observe:
 
 - **Near-maximal identity drift (≈ 1.0)**
 - **Severe recommendation turnover (overlap = 2 / 10)**
@@ -122,8 +103,6 @@ The number of shared items between the top-K recommendations before and after th
 
 Lower overlap indicates a stronger behavioral impact on recommendations.
 
----
-
 ## Key Findings
 
 ### • Small absolute manipulations are ineffective
@@ -147,8 +126,6 @@ This suggests:
 
 This behavior mirrors real-world recommender systems.
 
----
-
 ## Main Insight
 
 - Weak or sparse user histories are highly vulnerable
@@ -156,21 +133,13 @@ This behavior mirrors real-world recommender systems.
 - Algorithmic identity is continuous, not categorical
 
 
----
-
 ## Limitations
 
 The recommender is a surrogate model, not a production system. My idea is to expand this to the real recommender system that music streaming uses (unfortunately, Spotify has paused integrations, so my original idea was scrapped for now). Listening counts approximate real-time behavior, and social and contextual signals are not modeled.
 
 
----
-
 ## Future Work
 I'm going to work on tag-based and hybrid identity representations, and use the currently defunct Spotify API services to extend this project. Until that happens, I'll export my own listening data from Spotify and do a case study on turning into a metalhead under the recommender system in about two days. Temporal persistence and decay of synthetic identity , and defensive mechanisms (smoothing, regularization, anomaly detection) are other stuff I'd like to focus on.
-
-
----
-
 
 
 Identity is performative.
